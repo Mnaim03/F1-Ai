@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93df4376-ae6e-493a-b146-695d72a76029" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/SimpleDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleDriver.java" afterDir="false" />
-    </list>
+    <list default="true" id="93df4376-ae6e-493a-b146-695d72a76029" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +52,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749303924510</updated>
-      <workItem from="1749303925598" duration="3799000" />
+      <workItem from="1749303925598" duration="4098000" />
     </task>
     <servers />
   </component>

@@ -11,8 +11,8 @@ import scr.MessageBasedSensorModel;
 public abstract class SimpleDriver extends Controller {
 
 	// ===================== PARAMETRI DI CONTROLLO =====================
-	private final float Kp = 1.0f;
-	private final float Kd = 8.0f;
+	private final float Kp = 2.0f;
+	private final float Kd = 4.0f;
 	private final float MAX_SPEED_STRAIGHT = 350.0f;
 	private final float MAX_SPEED_CURVE = 200.0f;
 	private final float STRAIGHT_THRESHOLD = 25.0f;
@@ -58,7 +58,8 @@ public abstract class SimpleDriver extends Controller {
 		}
 
 		// Velocità target
-		float targetSpeed = (trackSensors[9] > STRAIGHT_THRESHOLD) ? MAX_SPEED_STRAIGHT : MAX_SPEED_CURVE;
+		float avgFront = (float)((trackSensors[8] + trackSensors[9] + trackSensors[10]) / 3.0);
+		float targetSpeed = (avgFront > STRAIGHT_THRESHOLD) ? MAX_SPEED_STRAIGHT : MAX_SPEED_CURVE;
 
 		// Sterzata (controllore PD)
 		float steer = (trackPos * Kp) + (angle * Kd);
@@ -71,13 +72,7 @@ public abstract class SimpleDriver extends Controller {
 
 		// Accelerazione/frenata
 		double accel = 0, brake = 0;
-		if (speed < targetSpeed) {
-			accel = 0.8f;
-			brake = 0;
-		} else {
-			accel = 0;
-			brake = (speed - targetSpeed) * BRAKE_FACTOR;
-		}
+		brake = Math.min((speed - targetSpeed) * BRAKE_FACTOR, 1.0);
 
 		// Azione finale
 		Action finalAction = new Action();
