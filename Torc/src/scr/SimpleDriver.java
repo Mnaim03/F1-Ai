@@ -34,7 +34,7 @@ public abstract class SimpleDriver extends Controller {
 
 	// --- Frenata ---
 	// Un fattore per rendere la frenata più o meno aggressiva.
-	private final float BRAKE_FACTOR = 10.f;
+	private final float BRAKE_FACTOR = 03.f;
 
 
 	@Override
@@ -59,7 +59,7 @@ public abstract class SimpleDriver extends Controller {
 			Action recoveryAction = new Action();
 			recoveryAction.gear = 1; // Metti la prima (o la retro se necessario)
 			recoveryAction.steering = -trackPos; // Sterza verso il centro della pista
-			recoveryAction.accelerate = 0.3; // Accelera dolcemente
+			recoveryAction.accelerate = 1.0; // Accelera dolcemente
 			recoveryAction.brake = 0;
 			return recoveryAction;
 		}
@@ -109,7 +109,7 @@ public abstract class SimpleDriver extends Controller {
 		if (speed < targetSpeed) {
 			// Se andiamo più piano della velocità obiettivo, acceleriamo.
 			// Acceleriamo in modo proporzionale a quanto ci manca per arrivare alla velocità target.
-			accel = 0.8f; // Puoi anche fare (targetSpeed - speed) / targetSpeed per un'accelerazione più dolce.
+			accel = 1.2f; // Puoi anche fare (targetSpeed - speed) / targetSpeed per un'accelerazione più dolce.
 			brake = 0;
 		} else {
 			// Se andiamo più veloci della velocità obiettivo, freniamo.
