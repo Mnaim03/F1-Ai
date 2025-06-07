@@ -23,7 +23,7 @@ public abstract class SimpleDriver extends Controller {
 	// La velocità massima desiderata in una curva media (in km/h).
 	private final float MAX_SPEED_CURVE = 200.0f;
 	// Distanza (in metri) che i sensori frontali devono "vedere" per considerare la strada un rettilineo.
-	private final float STRAIGHT_THRESHOLD = 40.0f;
+	private final float STRAIGHT_THRESHOLD = 25.0f;
 
 
 	// --- Cambio ---
