@@ -13,9 +13,9 @@ public abstract class SimpleDriver extends Controller {
 
 	// --- Sterzata ---
 	// Guadagno proporzionale: quanto bruscamente sterzare in base a quanto sei fuori centro.
-	private final float Kp = 0.8f;
+	private final float Kp = 1.0f;
 	// Guadagno derivativo: quanto smorzare la sterzata per evitare oscillazioni.
-	private final float Kd = 0.6f;
+	private final float Kd = 8.0f;
 
 	// --- Velocità ---
 	// La velocità massima desiderata in un rettilineo (in km/h).
