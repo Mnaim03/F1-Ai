@@ -12,8 +12,8 @@ public class Action {
 	public int gear = 0; // -1..6
 	public double steering = 0; // -1..1
 	public boolean restartRace = false;
-	public int focus = 360;	// ML Angolo di messa a fuoco desiderato in gradi [-90; 90],
-							// impostare 360 se non si desidera alcuna lettura della messa a fuoco!
+	public int focus = 360;// ML Desired focus angle in degrees [-90; 90], set to 360 if no focus reading
+							// is desired!
 
 	public String toString() {
 		limitValues();
