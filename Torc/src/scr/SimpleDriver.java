@@ -23,14 +23,14 @@ public abstract class SimpleDriver extends Controller {
 	// La velocità massima desiderata in una curva media (in km/h).
 	private final float MAX_SPEED_CURVE = 200.0f;
 	// Distanza (in metri) che i sensori frontali devono "vedere" per considerare la strada un rettilineo.
-	private final float STRAIGHT_THRESHOLD = 60.0f;
+	private final float STRAIGHT_THRESHOLD = 40.0f;
 
 
 	// --- Cambio ---
 	// Giri motore per salire di marcia.
 	private final int RPM_UPSHIFT = 7000;
 	// Giri motore per scalare marcia.
-	private final int RPM_DOWNSHIFT = 3000;
+	private final int RPM_DOWNSHIFT = 1500;
 
 	// --- Frenata ---
 	// Un fattore per rendere la frenata più o meno aggressiva.
