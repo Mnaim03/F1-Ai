@@ -34,7 +34,7 @@ public abstract class SimpleDriver extends Controller {
 
 	// --- Frenata ---
 	// Un fattore per rendere la frenata più o meno aggressiva.
-	private final float BRAKE_FACTOR = 0.1f;
+	private final float BRAKE_FACTOR = 06.f;
 
 
 	@Override
