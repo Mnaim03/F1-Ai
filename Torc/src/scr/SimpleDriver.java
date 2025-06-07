@@ -47,6 +47,7 @@ public class SimpleDriver extends Controller {
 
 	}
 
+	//Metodo è utlizzato al terimine della gara
 	public void shutdown() {
 		System.out.println("Bye bye!");
 	}
@@ -130,7 +131,13 @@ public class SimpleDriver extends Controller {
 
 	}
 
+
 	public Action control(SensorModel sensors) {
+		/**
+		 * Se l'auto ha un angolo, rispetto alla traccia, superiore a 30°
+		 * incrementa "stuck" che è una variabile che indica per quanti cicli l'auto è in condizioni di difficoltà.
+		 * Quando l'angolo si riduce, "stuck" viene riportata a 0 per indicare che l'auto è uscita dalla situazione di difficoltà.
+		 */
 		// check if car is currently stuck
 		if (Math.abs(sensors.getAngleToTrackAxis()) > stuckAngle) {
 			// update stuck counter
@@ -140,11 +147,15 @@ public class SimpleDriver extends Controller {
 			stuck = 0;
 		}
 
+		/**
+		 * Se Stuck è maggiore di 25 (StuckTime) allora procedi a entrare in situazione di Recorey,
+		 * per far fronte alla situazione di difficoltà
+		 */
 		// after car is stuck for a while apply recovering policy
 		if (stuck > stuckTime) {
 			/*
-			 * set gear and sterring command assuming car is pointing in a direction out of
-			 * track
+			 * Impostare la marcia e il comando di sterzara supponenedo che l'auto
+			 * stia puntando in una direzione al di fuori di pista
 			 */
 
 			// to bring car parallel to track axis
@@ -176,6 +187,10 @@ public class SimpleDriver extends Controller {
 			// compute steering
 			float steer = getSteer(sensors);
 
+			/**
+			 * Quì stiamo prevendendo evantuali errori legati ad una errata normalizzazione del range -1,1 nella funziona
+			 * di aggiornamento di tali valori
+			 */
 			// normalize steering
 			if (steer < -1)
 				steer = -1;
