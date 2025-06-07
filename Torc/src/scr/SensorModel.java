@@ -6,8 +6,8 @@ package scr;
  */
 public interface SensorModel {
 
-	// basic information about your car and the track (you probably should take care
-	// of these somehow)
+
+	// Informazioni di base sull'auto e sul tracciato
 
 	public double getSpeed();
 
@@ -21,13 +21,13 @@ public interface SensorModel {
 
 	public int getGear();
 
-	// basic information about other cars (only useful for multi-car races)
+	// informazioni di base sulle altre auto (utili solo per le gare con più auto)
 
 	public double[] getOpponentSensors();
 
 	public int getRacePosition();
 
-	// additional information (use if you need)
+	// informazioni aggiuntive (utilizzare se necessario)
 
 	public double getLateralSpeed();
 
