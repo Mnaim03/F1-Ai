@@ -48,8 +48,6 @@ public abstract class Controller {
 
 	public abstract Action control(SensorModel sensors);
 
-	public abstract Action control(MessageBasedSensorModel sensors);
-
 	public abstract void reset(); // called at the beginning of each new trial
 
 	public abstract void shutdown();
