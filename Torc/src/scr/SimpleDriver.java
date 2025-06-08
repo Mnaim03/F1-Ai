@@ -50,7 +50,7 @@ public class SimpleDriver extends Controller {
 	public void reset() {
 		System.out.println("Restarting the race!");
 		try {
-			logger = new PrintWriter(new FileWriter("log_giro.csv", true));
+			logger = new PrintWriter(new FileWriter("log_giro.csv", false));
 			logger.println("speed,angleToTrack,trackPos,steering,accel,brake,gear");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -172,6 +172,7 @@ public class SimpleDriver extends Controller {
 								action.brake + "," +
 								action.gear
 				);
+				logger.flush();
 			}
 
 			return action;
