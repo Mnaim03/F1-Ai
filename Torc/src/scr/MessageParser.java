@@ -9,9 +9,8 @@ import java.util.StringTokenizer;
  * 6:17:32 PM
  */
 public class MessageParser {
-	/**
-	 * Analizza il messaggio dal serverbot e crea una tabella di nomi e valori associati delle letture
-	 */
+	// parses the message from the serverbot, and creates a table of
+	// associated names and values of the readings
 
 	private Hashtable<String, Object> table = new Hashtable<String, Object>();
 	private String message;
