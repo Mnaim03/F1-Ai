@@ -32,9 +32,9 @@ public class SimpleDriver extends Controller {
 	final float absMinSpeed = (float) 3.0;
 
 	/* Costanti da stringere */
-	final float clutchMax = (float) 0.5;
-	final float clutchDelta = (float) 0.05;
-	final float clutchRange = (float) 0.82;
+	final float clutchMax = (float) 1.0;
+	final float clutchDelta = (float) 1.0;
+	final float clutchRange = (float) 1.0;
 	final float clutchDeltaTime = (float) 0.02;
 	final float clutchDeltaRaced = 10;
 	final float clutchDec = (float) 0.01;
