@@ -118,14 +118,14 @@ public class SimpleDriver extends Controller {
 			classe = 1;
 		}
 
-		else if (input.equals("k")) {
+		else if (input.equals("q")) {
 			action.accelerate = 1;
 			brake(true);
 			action.steering = steer(false, false);
 			classe = 2;
 		}
 
-		else if (input.equals("l")) {
+		else if (input.equals("e")) {
 			action.accelerate = 1;
 			brake(true);
 			action.steering = steer(false, true);
