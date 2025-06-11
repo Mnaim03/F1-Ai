@@ -13,7 +13,7 @@ public class SimpleDriver extends Controller {
 	public SimpleDriver(int numberOfNeighbors) {
 		//vengano accettati dal costruttore solo un numero di vicini k dispari e maggiore di 0
 		if((numberOfNeighbors%2 != 0) && (numberOfNeighbors%2 > 0)){
-			this.knnFinder = new KNearestNeighbor("dataset.csv");
+			this.knnFinder = new KNearestNeighbor("training.csv");
 			this.numberOfNeighbors = numberOfNeighbors;
 		} else {
 			System.out.println("Errore nella scelta del numero di vicini");
@@ -83,13 +83,25 @@ public class SimpleDriver extends Controller {
 			sensors.getAngleToTrackAxis(), 
 			sensors.getSpeed(), 
 			sensors.getLateralSpeed(),
-			sensors.getTrackEdgeSensors()[0], 
-			sensors.getTrackEdgeSensors()[3], 
+			sensors.getTrackEdgeSensors()[0],
+			sensors.getTrackEdgeSensors()[1],
+			sensors.getTrackEdgeSensors()[2],
+			sensors.getTrackEdgeSensors()[3],
+			sensors.getTrackEdgeSensors()[4],
 			sensors.getTrackEdgeSensors()[5],
-			sensors.getTrackEdgeSensors()[9], 
-			sensors.getTrackEdgeSensors()[13], 
+			sensors.getTrackEdgeSensors()[6],
+			sensors.getTrackEdgeSensors()[7],
+			sensors.getTrackEdgeSensors()[8],
+			sensors.getTrackEdgeSensors()[9],
+			sensors.getTrackEdgeSensors()[10],
+			sensors.getTrackEdgeSensors()[11],
+			sensors.getTrackEdgeSensors()[12],
+			sensors.getTrackEdgeSensors()[13],
+			sensors.getTrackEdgeSensors()[14],
 			sensors.getTrackEdgeSensors()[15],
-			sensors.getTrackEdgeSensors()[18], 
+			sensors.getTrackEdgeSensors()[16],
+			sensors.getTrackEdgeSensors()[17],
+			sensors.getTrackEdgeSensors()[18],
 			sensors.getTrackPosition()
 		};
 		Sample attuale = new Sample(features);

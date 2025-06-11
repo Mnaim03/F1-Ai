@@ -20,7 +20,7 @@ public class KNearestNeighbor {
     public KNearestNeighbor(String filename) {
         this.trainingData = new ArrayList<>();
         this.classCounts = new int[10]; //le classi di appartenenza sono 10
-        this.firstLineOfTheFile = "ANGLE;SPEED_X;SPEED_Y;TRACK_-90;TRACK_-45;TRACK_-20;TRACK_0;TRACK_20;TRACK_45;TRACK_90;TRACK_POS;CLASS";
+        this.firstLineOfTheFile = "ANGLE;SPEED_X;SPEED_Y;TRACK_0;TRACK_1;TRACK_2;TRACK_3;TRACK_4;TRACK_5;TRACK_6;TRACK_7;TRACK_8;TRACK_9;TRACK_10;TRACK_11;TRACK_12;TRACK_13;TRACK_14;TRACK_15;TRACK_16;TRACK_17;TRACK_18;TRACK_POS;CLASS";
         this.readPointsFromCSV(filename);
 
         //Calcolo il numero di features in base alla lunghezza del vettore features di un singolo Sample 
