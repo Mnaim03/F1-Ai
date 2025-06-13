@@ -1,10 +1,40 @@
 package scr;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class SimpleDriver extends Controller {
 
 	/* Gear Changing Constants */
 	final int[] gearUp = { 5000, 6000, 6000, 6500, 7000, 0 };
 	final int[] gearDown = { 0, 2500, 3000, 3000, 3500, 3500 };
+
+	// Lista per memorizzare i dati durante l'esecuzione
+	private List<DataEntry> dataEntries = new ArrayList<>();
+
+	// Classe per memorizzare i dati di una singola entry
+	private static class DataEntry {
+		double angleToTrackAxis;
+		double speed;
+		double lateralSpeed;
+		double[] trackEdgeSensors;
+		double trackPosition;
+		int classe;
+
+		public DataEntry(double angleToTrackAxis, double speed, double lateralSpeed, 
+						double[] trackEdgeSensors, double trackPosition, int classe) {
+			this.angleToTrackAxis = angleToTrackAxis;
+			this.speed = speed;
+			this.lateralSpeed = lateralSpeed;
+			this.trackEdgeSensors = trackEdgeSensors.clone(); // Clone per evitare riferimenti
+			this.trackPosition = trackPosition;
+			this.classe = classe;
+		}
+	}
 
 	//oggetto del tipo K-NN
 	private KNearestNeighbor knnFinder;
@@ -27,6 +57,115 @@ public class SimpleDriver extends Controller {
 
 	public void shutdown() {
 		System.out.println("Bye bye!");
+		if (askUserToSave()) {
+			writeAllDataToCSV();
+		} else {
+			System.out.println("Dati non salvati come richiesto dall'utente.");
+		}
+	}
+
+	private boolean askUserToSave() {
+		if (dataEntries.isEmpty()) {
+			System.out.println("Nessun dato da salvare.");
+			return false;
+		}
+		
+		try {
+			char response;
+			
+			do {
+				System.out.print("Vuoi salvare " + dataEntries.size() + " record nel CSV? (y/n): ");
+				response = (char) System.in.read();
+				
+				// Consuma eventuali caratteri rimanenti (come \n)
+				while (System.in.available() > 0) {
+					System.in.read();
+				}
+				
+				if (response == 'y' || response == 'Y') {
+					return true;
+				} else if (response == 'n' || response == 'N') {
+					return false;
+				} else {
+					System.out.println("Risposta non valida. Inserisci 'y' per sì o 'n' per no.");
+				}
+			} while (true);
+			
+		} catch (IOException e) {
+			System.err.println("Errore nella lettura dell'input: " + e.getMessage());
+			// In caso di errore, non salvare per sicurezza
+			return false;
+		}
+	}
+
+	private void collectDataForCSV(SensorModel sensors, Action action, int classe) {
+		// Crea una nuova entry con i dati attuali
+		DataEntry entry = new DataEntry(
+			sensors.getAngleToTrackAxis(),
+			sensors.getSpeed(),
+			sensors.getLateralSpeed(),
+			sensors.getTrackEdgeSensors(),
+			sensors.getTrackPosition(),
+			classe
+		);
+		
+		// Aggiungi l'entry alla lista
+		dataEntries.add(entry);
+		System.out.println("Dati raccolti. Totale entries: " + dataEntries.size());
+	}
+
+	private void writeAllDataToCSV() {
+		if (dataEntries.isEmpty()) {
+			System.out.println("Nessun dato da salvare nel CSV.");
+			return;
+		}
+
+		String filePath = "training.csv";
+		File file = new File(filePath);
+
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) { // false per sovrascrivere
+			
+			// Scrivi l'intestazione con tutti i 19 angoli
+			StringBuilder header = new StringBuilder();
+			header.append("ANGLE;SPEED_X;SPEED_Y;");
+			
+			// Aggiungi le colonne per tutti i 19 sensori di traccia
+			for (int i = 0; i < 19; i++) {
+				header.append("TRACK_").append(i).append(";");
+			}
+			
+			header.append("TRACK_POS;CLASS\n");
+			writer.write(header.toString());
+
+			// Scrivi tutti i dati raccolti
+			for (DataEntry entry : dataEntries) {
+				StringBuilder line = new StringBuilder();
+
+				// Append sensor data
+				line.append(entry.angleToTrackAxis).append(";");
+				line.append(entry.speed).append(";");
+				line.append(entry.lateralSpeed).append(";");
+				
+				// Aggiungi tutti i 19 sensori di traccia
+				for (int i = 0; i < 19; i++) {
+					line.append(entry.trackEdgeSensors[i]).append(";");
+				}
+				
+				line.append(entry.trackPosition).append(";");
+				line.append(entry.classe).append("\n");
+
+				writer.write(line.toString());
+			}
+			
+			System.out.println("Salvati " + dataEntries.size() + " record nel CSV: " + filePath);
+			
+		} catch (IOException e) {
+			System.err.println("Errore durante la scrittura del file CSV: " + e.getMessage());
+			e.printStackTrace();
+		} catch (Exception e) {
+			System.err.println("Errore inaspettato durante la scrittura del CSV: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	private int getGear(SensorModel sensors) {
@@ -183,6 +322,9 @@ public class SimpleDriver extends Controller {
 				System.out.println("\n\n\n\n\nErrore: nessuna classe di appartenenza trovata\n\n\n\n\n\n");
 				break;
 		}
+
+		collectDataForCSV(sensors, action, cls);
+
 		return action;
 	}
 
