@@ -25,7 +25,6 @@ public class Client {
 	private static Stage stage;
 	private static String trackName;
 	public static String input = "";
-	public static boolean printFlag = false;
 	public static Action prevAct = new Action();
 
 	/**

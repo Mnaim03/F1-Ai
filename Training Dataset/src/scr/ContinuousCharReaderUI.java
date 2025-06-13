@@ -26,11 +26,7 @@ public class ContinuousCharReaderUI extends JFrame {
                 char ch = e.getKeyChar();
                 // Clear the text field
                 inputField.setText("");
-                if(ch == 'P') {
-                    Client.printFlag = !Client.printFlag;
-                    System.out.println("PrintFlag set to " + Client.printFlag);
-                    return;
-                }
+
                 System.out.println("You pressed: " + ch);
                 Client.input = Character.toString(ch);
                 System.out.println("Setting Client input as: " + Client.input);
