@@ -105,8 +105,8 @@ public class SimpleDriver extends Controller {
 			features[0],
 			features[1],
 			features[2],
-			Arrays.copyOfRange(features, 3, 21),
-			features[22],
+			Arrays.copyOfRange(features, 3, 22),
+			features[23],
 			classe
 		);
 		
