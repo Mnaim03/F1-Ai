@@ -98,20 +98,19 @@ public class SimpleDriver extends Controller {
 		}
 	}
 
-	private void collectDataForCSV(SensorModel sensors, Action action, int classe) {
+	private void collectDataForCSV(double[] features, Action action, int classe) {
 		// Crea una nuova entry con i dati attuali
 		DataEntry entry = new DataEntry(
-			sensors.getAngleToTrackAxis(),
-			sensors.getSpeed(),
-			sensors.getLateralSpeed(),
-			sensors.getTrackEdgeSensors(),
-			sensors.getTrackPosition(),
+			features[0],
+			features[1],
+			features[2],
+			double[] partialFeatures = Arrays.copyOfRange(features, 3, 21);,
+			features[22],
 			classe
 		);
 		
 		// Aggiungi l'entry alla lista
 		dataEntries.add(entry);
-		System.out.println("Dati raccolti. Totale entries: " + dataEntries.size());
 	}
 
 	private void writeAllDataToCSV() {
@@ -323,7 +322,7 @@ public class SimpleDriver extends Controller {
 				break;
 		}
 
-		//collectDataForCSV(sensors, action, cls);
+		collectDataForCSV(features, action, cls);
 
 		return action;
 	}
