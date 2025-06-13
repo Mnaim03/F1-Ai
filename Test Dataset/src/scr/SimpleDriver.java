@@ -105,7 +105,7 @@ public class SimpleDriver extends Controller {
 			features[0],
 			features[1],
 			features[2],
-			Arrays.copyOfRange(features, 3, 21),
+			Arrays.copyOfRange(features, 3, 22), //Copia gli elementi da 3 a 21
 			features[22],
 			classe
 		);
@@ -123,7 +123,7 @@ public class SimpleDriver extends Controller {
 		String filePath = "training.csv";
 		File file = new File(filePath);
 
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , true))) { // false per sovrascrivere
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , true))) { //True per evitare che venga sovrascritto
 			
 			// Scrivi l'intestazione con tutti i 19 angoli
 			StringBuilder header = new StringBuilder();
@@ -147,7 +147,7 @@ public class SimpleDriver extends Controller {
 				line.append(entry.lateralSpeed).append(";");
 				
 				// Aggiungi tutti i 19 sensori di traccia
-				for (int i = 0; i < 18; i++) {
+				for (int i = 0; i < 19; i++) {
 					line.append(entry.trackEdgeSensors[i]).append(";");
 				}
 				
@@ -157,7 +157,7 @@ public class SimpleDriver extends Controller {
 				writer.write(line.toString());
 			}
 			
-			System.out.println("Salvati " + dataEntries.size() + " record nel CSV: " + filePath);
+			System.out.println("Salvati " + (dataEntries.size()*220)/1000 + " KB nel CSV: " + filePath);
 			
 		} catch (IOException e) {
 			System.err.println("Errore durante la scrittura del file CSV: " + e.getMessage());
