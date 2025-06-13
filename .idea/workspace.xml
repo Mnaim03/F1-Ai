@@ -5,106 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="699430b0-2241-4d26-9ef5-1088e5a7bf5d" name="Changes" comment="aa">
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/build.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/classes/dataset.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/classes/datasetRecupero.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/classes/datasetTMP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/Action.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/CSVconcat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/ContinuousCharReaderUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/ContinuousCharReaderUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/Controller$Stage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/DeadSimpleSoloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/MessageBasedSensorModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/MessageParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/SensorModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/SimpleDriver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/bin/scr/SocketHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/Action.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/CSVconcat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/ContinuousCharReaderUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/ContinuousCharReaderUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/Controller$Stage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/DeadSimpleSoloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/MessageBasedSensorModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/MessageParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/SensorModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/SimpleDriver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/classes/scr/SocketHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/build.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/Action.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/CSVconcat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/ContinuousCharReaderUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/DeadSimpleSoloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/MessageBasedSensorModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/MessageParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/SensorModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/SimpleDriver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/src/scr/SocketHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creazione Dataset/testing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppo_Project/src/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/build.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/Action.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/Controller$Stage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/DeadSimpleSoloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/KDTree$KDNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/KDTree.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/KNearestNeighbor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/MessageBasedSensorModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/MessageParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/READ ME.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/Sample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/SensorModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/SimpleDriver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/bin/scr/SocketHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/NearestNeighbor$Sample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/NearestNeighbor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/Action.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/Controller$Stage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/DeadSimpleSoloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/KDTree$KDNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/KDTree.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/KNearestNeighbor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/MessageBasedSensorModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/MessageParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/NearestNeighbor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/Sample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/SensorModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/SimpleDriver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/scr/SocketHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/classes/training.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/Lettura Dataset.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/build.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/Action.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/DeadSimpleSoloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/KDTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/KNearestNeighbor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/MessageBasedSensorModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/MessageParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/READ ME.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/Sample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/SensorModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/SimpleDriver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettura Dataset/src/scr/SocketHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Dataset/src/scr/SimpleDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test Dataset/src/scr/SimpleDriver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,28 +36,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "finito",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/lupo/Desktop/F1-Ai",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;finito&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/lupo/Desktop/F1-Ai&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
-        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26574.91" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26574.91" />
       </set>
     </attachedChunks>
   </component>
@@ -172,6 +74,7 @@
       <workItem from="1749656336870" duration="18000" />
       <workItem from="1749802979656" duration="190000" />
       <workItem from="1749819645810" duration="21000" />
+      <workItem from="1749820980616" duration="195000" />
     </task>
     <servers />
   </component>

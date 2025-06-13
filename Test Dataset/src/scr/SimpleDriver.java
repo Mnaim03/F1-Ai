@@ -246,7 +246,7 @@ public class SimpleDriver extends Controller {
 		Sample attuale = new Sample(features);
 
 		//Trovo la classe di appartenenza
-		int cls = knnFinder.classify(attuale, 3);
+		int cls = knnFinder.classify(attuale, 1);
 
 
 		switch (cls) {
