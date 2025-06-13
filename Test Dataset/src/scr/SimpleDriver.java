@@ -246,7 +246,7 @@ public class SimpleDriver extends Controller {
 		Sample attuale = new Sample(features);
 
 		//Trovo la classe di appartenenza
-		int cls = knnFinder.classify(attuale, 1);
+		int cls = knnFinder.classify(attuale, 3);
 
 
 		switch (cls) {
@@ -323,7 +323,7 @@ public class SimpleDriver extends Controller {
 				break;
 		}
 
-		collectDataForCSV(sensors, action, cls);
+		//collectDataForCSV(sensors, action, cls);
 
 		return action;
 	}
