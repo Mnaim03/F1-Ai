@@ -147,7 +147,7 @@ public class SimpleDriver extends Controller {
 				line.append(entry.lateralSpeed).append(";");
 				
 				// Aggiungi tutti i 19 sensori di traccia
-				for (int i = 0; i < 19; i++) {
+				for (int i = 0; i < 18; i++) {
 					line.append(entry.trackEdgeSensors[i]).append(";");
 				}
 				
