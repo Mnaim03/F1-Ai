@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 public class SimpleDriver extends Controller {
 
@@ -104,7 +105,7 @@ public class SimpleDriver extends Controller {
 			features[0],
 			features[1],
 			features[2],
-			double[] partialFeatures = Arrays.copyOfRange(features, 3, 21);,
+			Arrays.copyOfRange(features, 3, 21),
 			features[22],
 			classe
 		);
