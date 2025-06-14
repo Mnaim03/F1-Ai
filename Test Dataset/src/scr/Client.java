@@ -5,6 +5,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.StringTokenizer;
 import scr.Controller.Stage;
 
+/*
+ * Classe principale del client: si connette al server TORCS, 
+ * invia comandi e riceve aggiornamenti di stato
+ */
 public class Client {
 
 	private static int UDP_TIMEOUT = 10000;
@@ -34,7 +38,7 @@ public class Client {
 	 *             set the name of current track
 	 */
 	public static void main(String[] args) {
-		parseParameters(args);
+		parseParameters(args); // Parsing degli argomenti da riga di comando
 		SocketHandler mySocket = new SocketHandler(host, port, verbose);
 		String inMsg;
 

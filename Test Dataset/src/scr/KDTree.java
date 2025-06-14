@@ -5,11 +5,19 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
+/**
+* Implementazione di un KD-Tree per eseguire ricerche k-nearest neighbors 
+* in uno spazio multidimensionale.
+*/
 class KDTree {
 
     private KDNode root;
     private int dimensions;
 
+    /**
+     * Costruttore che accetta una lista di punti (Sample) per costruire l'albero KD.
+     * @param points Lista di punti da cui costruire l'albero KD.
+     */
     public KDTree(List<Sample> points) {
         if (points.isEmpty()) {
             throw new IllegalArgumentException("Points list cannot be empty");
@@ -18,6 +26,9 @@ class KDTree {
         root = buildTree(points, 0);
     }
 
+    /**
+     * Classe interna che rappresenta un nodo dell'albero KD.
+     */
     private static class KDNode {
         Sample point;
         KDNode left, right;
@@ -27,6 +38,13 @@ class KDTree {
         }
     }
 
+    /**
+     * Metodo ricorsivo per costruire l'albero KD.
+     * Divide i punti lungo l'asse corrente e crea nodi per il punto mediano.
+     * @param points Lista di punti da cui costruire l'albero.
+     * @param depth Profondità corrente nell'albero, usata per determinare l'asse di divisione.
+     * @return Il nodo radice dell'albero KD costruito.
+     */
     private KDNode buildTree(List<Sample> points, int depth) {
         if (points.isEmpty()) {
             return null;
@@ -43,12 +61,27 @@ class KDTree {
         return node;
     }
 
+    /**
+     * Trova i k vicini più prossimi di un punto target utilizzando l'albero KD.
+     * @param target Il punto per il quale trovare i vicini.
+     * @param k Il numero di vicini da trovare.
+     * @return Una lista dei k vicini più prossimi.
+     */
     public List<Sample> kNearestNeighbors(Sample target, int k) {
         PriorityQueue<Sample> pq = new PriorityQueue<>(k, Comparator.comparingDouble(target::distance).reversed());
         kNearestNeighbors(root, target, k, 0, pq);
         return new ArrayList<>(pq);
     }
 
+    /**
+     * Metodo ricorsivo per trovare i k vicini più prossimi.
+     * Utilizza una coda di priorità per mantenere i k punti più vicini.
+     * @param node Nodo corrente dell'albero KD.
+     * @param target Punto target per il quale trovare i vicini.
+     * @param k Numero di vicini da trovare.
+     * @param depth Profondità corrente nell'albero, usata per determinare l'asse di divisione.
+     * @param pq Coda di priorità che mantiene i k punti più vicini.
+     */
     private void kNearestNeighbors(KDNode node, Sample target, int k, int depth, PriorityQueue<Sample> pq) {
         if (node == null) {
             return;

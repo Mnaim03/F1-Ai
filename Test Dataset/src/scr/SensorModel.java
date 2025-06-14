@@ -1,8 +1,12 @@
 package scr;
 
 /**
- * Created by IntelliJ IDEA. User: Administrator Date: Mar 4, 2008 Time:
- * 12:18:47 PM
+ * Interfaccia per il modello dei sensori di un'auto da corsa.
+ * Questa interfaccia definisce i metodi per ottenere informazioni sui sensori
+ * dell'auto, come velocità, angolo rispetto all'asse della pista, posizione sulla pista, e informazioni sugli avversari.
+ * Può essere implementata da classi che rappresentano un'auto da corsa e il suo comportamento in un simulatore di corse.
+ * Utilizzata in contesti di intelligenza artificiale per il controllo dell'auto in un ambiente di gara virtuale.
+ * * @author Your Name
  */
 public interface SensorModel {
 

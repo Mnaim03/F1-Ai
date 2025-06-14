@@ -12,8 +12,9 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 /**
- * @author Daniele Loiacono
+ * Semplice UDP socket handler per ricevere e inviare messaggi.
  * 
+ * @author Your Name
  */
 public class SocketHandler {
 
