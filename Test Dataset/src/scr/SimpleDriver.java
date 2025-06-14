@@ -101,13 +101,12 @@ public class SimpleDriver extends Controller {
 
 	private void collectDataForCSV(double[] features, Action action, int classe) {
 		// Crea una nuova entry con i dati attuali
-		double[] trackEdgeSensors = Arrays.copyOfRange(features, 3, 22);
 
 		DataEntry entry = new DataEntry(
 			features[0],
 			features[1],
 			features[2],
-			trackEdgeSensors,
+			Arrays.copyOfRange(features, 3, 22),
 			features[22],
 			classe
 		);
@@ -249,7 +248,7 @@ public class SimpleDriver extends Controller {
 		Sample attuale = new Sample(features);
 
 		//Trovo la classe di appartenenza
-		int cls = knnFinder.classify(attuale, 3);
+		int cls = knnFinder.classify(attuale, 4);
 
 
 		switch (cls) {
