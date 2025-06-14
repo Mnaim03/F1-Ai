@@ -52,10 +52,15 @@ public class SimpleDriver extends Controller {
 		}	
 	}
 
+	/* Metodo chiamato a inizio gara o dopo una collisione per azzerare lo stato */
 	public void reset() {
 		System.out.println("Restarting the race!");
 	}
 
+	/**
+	 * Metodo chiamato alla fine della gara per chiedere se salvare i dati raccolti.
+	 * Se l'utente sceglie di salvare, i dati vengono scritti in un file CSV.
+	 */
 	public void shutdown() {
 		System.out.println("Bye bye!");
 		if (askUserToSave()) {
@@ -65,6 +70,11 @@ public class SimpleDriver extends Controller {
 		}
 	}
 
+	/* 
+	 * Metodo chiamato per chiedere all'utente se salvare i dati raccolti.
+	 * Chiede all'utente se vuole salvare i dati raccolti in un file CSV.
+	 * @return true se l'utente ha scelto di salvare, false altrimenti.
+	 */
 	private boolean askUserToSave() {
 		if (dataEntries.isEmpty()) {
 			System.out.println("Nessun dato da salvare.");
@@ -99,6 +109,13 @@ public class SimpleDriver extends Controller {
 		}
 	}
 
+	/**
+	 * Metodo per raccogliere i dati da salvare nel CSV.
+	 * Crea una nuova entry con i dati attuali e la aggiunge alla lista.
+	 * @param features le caratteristiche del campione corrente
+	 * @param action l'azione corrente
+	 * @param classe la classe di appartenenza del campione
+	 */
 	private void collectDataForCSV(double[] features, Action action, int classe) {
 		// Crea una nuova entry con i dati attuali
 
@@ -115,6 +132,11 @@ public class SimpleDriver extends Controller {
 		dataEntries.add(entry);
 	}
 
+	/**
+	 * Metodo per scrivere tutti i dati raccolti in un file CSV.
+	 * Se il file esiste, i nuovi dati vengono aggiunti alla fine.
+	 * Se il file non esiste, viene creato e viene scritta l'intestazione.
+	 */
 	private void writeAllDataToCSV() {
 		if (dataEntries.isEmpty()) {
 			System.out.println("Nessun dato da salvare nel CSV.");
@@ -170,6 +192,12 @@ public class SimpleDriver extends Controller {
 	}
 
 
+	/**
+	 * Metodo per determinare il cambio di marcia in base ai sensori.
+	 * 
+	 * @param sensors i sensori del modello della macchina
+	 * @return il numero della marcia da utilizzare
+	 */
 	private int getGear(SensorModel sensors) {
 		int gear = sensors.getGear();
 		double rpm = sensors.getRPM();
@@ -190,7 +218,16 @@ public class SimpleDriver extends Controller {
 			return gear;
 	}
 
+
+	// Queste variabili vengono utilizzate per mantenere lo stato corrente del freno e dello sterzo.
 	private float currBrake = (float) 0.3;
+	/**
+	 * Metodo per controllare il freno.
+	 * Se reset è true, il freno viene azzerato, altrimenti viene incrementato di 0.1 fino a un massimo di 1.
+	 * 
+	 * @param reset se true, azzera il freno, altrimenti lo incrementa
+	 * @return il valore corrente del freno
+	 */
 	private float brake(boolean reset) {
 		if(reset){
 			currBrake = 0;
@@ -200,6 +237,14 @@ public class SimpleDriver extends Controller {
 		return currBrake > 1 ? 1 : currBrake;
 	}
 
+	/**
+	 * Metodo per controllare lo sterzo.
+	 * Se reset è true, lo sterzo viene azzerato, altrimenti viene incrementato o decrementato di 0.01 a seconda della direzione.
+	 * 
+	 * @param reset se true, azzera lo sterzo, altrimenti lo modifica in base alla direzione
+	 * @param right se true, sterza a destra, altrimenti a sinistra
+	 * @return il valore corrente dello sterzo
+	 */
 	private float currSteer = (float) 0;
 	private float steer(boolean reset, boolean right) {
 		if(reset){
@@ -214,6 +259,12 @@ public class SimpleDriver extends Controller {
 		return currSteer > 0.2 ? (float) 0.2 : (currSteer < -0.2 ? (float) -0.2 : currSteer);
 	}
 
+	/**
+ 		* Metodo principale che controlla il comportamento del veicolo in base ai sensori.
+ 		* Questo metodo utilizza un classificatore K-NN per determinare l'azione da intraprendere.
+ 		* @param sensors il modello dei sensori che fornisce le informazioni sullo stato del veicolo
+ 		* @return l'azione da eseguire, che include il cambio di marcia, l'accelerazione, il freno e lo sterzo
+ 	*/
 	public Action control(SensorModel sensors) {
 		
 		Action action = new Action();
@@ -331,6 +382,12 @@ public class SimpleDriver extends Controller {
 	}
 
 
+	/**
+ 		* Metodo per inizializzare gli angoli di sterzata.
+ 		* Questo metodo restituisce un array di 19 angoli che rappresentano le posizioni di sterzata.
+ 		* * Gli angoli sono distribuiti uniformemente tra -90 e 90 gradi, con valori specifici per le posizioni di sterzata.
+ 		* * @return un array di float contenente gli angoli di sterzata
+ 	*/
 	public float[] initAngles() {
 
 		float[] angles = new float[19];
