@@ -101,14 +101,14 @@ public class SimpleDriver extends Controller {
 
 	private void collectDataForCSV(double[] features, Action action, int classe) {
 		// Crea una nuova entry con i dati attuali
-		double[] trackEdgeSensors = Arrays.copyOfRange(features, 3, 21);
+		double[] trackEdgeSensors = Arrays.copyOfRange(features, 3, 22);
 		
 		DataEntry entry = new DataEntry(
 			features[0],
 			features[1],
 			features[2],
 			trackEdgeSensors,
-			features[22],
+			features[23],
 			classe
 		);
 		
