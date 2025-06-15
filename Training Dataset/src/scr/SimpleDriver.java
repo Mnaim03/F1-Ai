@@ -155,7 +155,7 @@ public class SimpleDriver extends Controller {
 		String filePath = "training.csv";
 		File file = new File(filePath);
 
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) { // false per sovrascrivere
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) { // false per sovrascrivere
 			
 			// Scrivi l'intestazione con tutti i 19 angoli
 			StringBuilder header = new StringBuilder();
