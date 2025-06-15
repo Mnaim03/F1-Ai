@@ -155,18 +155,31 @@ public class SimpleDriver extends Controller {
 		String filePath = "training.csv";
 		File file = new File(filePath);
 
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) { // false per sovrascrivere
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) { 
 			
 			// Scrivi l'intestazione con tutti i 19 angoli
+			if (!file.exists()) {
+				file.createNewFile(); // Crea il file se non esiste
+			}
+			// Scrivi l'intestazione solo se il file è vuoto
 			StringBuilder header = new StringBuilder();
-			header.append("ANGLE;SPEED_X;SPEED_Y;");
+			// Controlla se il file è vuoto
+			// Se il file è vuoto, scrivi l'intestazione
+			if (file.length() == 0) {
+				header.append("ANGLE;SPEED_X;SPEED_Y;");
+			} else {
+				// Se il file non è vuoto, non riscrivere l'intestazione
+				return;
+			}
 			
 			// Aggiungi le colonne per tutti i 19 sensori di traccia
 			for (int i = 0; i < 19; i++) {
 				header.append("TRACK_").append(i).append(";");
 			}
 			
+			// Aggiungi le colonne per la posizione della traccia e la classe
 			header.append("TRACK_POS;CLASS\n");
+			// Scrivi l'intestazione nel file
 			writer.write(header.toString());
 
 			// Scrivi tutti i dati raccolti
@@ -183,9 +196,11 @@ public class SimpleDriver extends Controller {
 					line.append(entry.trackEdgeSensors[i]).append(";");
 				}
 				
+				// Aggiungi la posizione della traccia e la classe
 				line.append(entry.trackPosition).append(";");
 				line.append(entry.classe).append("\n");
 
+				// Scrivi la riga nel file
 				writer.write(line.toString());
 			}
 			

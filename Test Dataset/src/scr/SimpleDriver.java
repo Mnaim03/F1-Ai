@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
 public class SimpleDriver extends Controller {
 
@@ -39,18 +39,6 @@ public class SimpleDriver extends Controller {
 
 	//oggetto del tipo K-NN
 	private KNearestNeighbor knnFinder;
-	private int numberOfNeighbors; 
-    
-	public SimpleDriver(int numberOfNeighbors) {
-		//vengano accettati dal costruttore solo un numero di vicini k dispari e maggiore di 0
-		if((numberOfNeighbors%2 != 0) && (numberOfNeighbors%2 > 0)){
-			this.knnFinder = new KNearestNeighbor("training.csv");
-			this.numberOfNeighbors = numberOfNeighbors;
-		} else {
-			System.out.println("Errore nella scelta del numero di vicini");
-			System.exit(1); 
-		}	
-	}
 
 	/* Metodo chiamato a inizio gara o dopo una collisione per azzerare lo stato */
 	public void reset() {
@@ -146,7 +134,7 @@ public class SimpleDriver extends Controller {
 		String filePath = "training.csv";
 		File file = new File(filePath);
 
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) { // false per sovrascrivere
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
 			
 			// Scrivi l'intestazione con tutti i 19 angoli
 			StringBuilder header = new StringBuilder();
@@ -298,7 +286,7 @@ public class SimpleDriver extends Controller {
 		};
 		Sample attuale = new Sample(features);
 
-		//Trovo la classe di appartenenza
+		//Trovo la classe di appartenenza con il K-NN
 		int cls = knnFinder.classify(attuale, 3);
 
 
