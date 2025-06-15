@@ -167,9 +167,6 @@ public class SimpleDriver extends Controller {
 			// Se il file è vuoto, scrivi l'intestazione
 			if (file.length() == 0) {
 				header.append("ANGLE;SPEED_X;SPEED_Y;");
-			} else {
-				// Se il file non è vuoto, non riscrivere l'intestazione
-				return;
 			}
 			
 			// Aggiungi le colonne per tutti i 19 sensori di traccia
