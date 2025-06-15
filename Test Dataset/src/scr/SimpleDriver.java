@@ -40,6 +40,10 @@ public class SimpleDriver extends Controller {
 	//oggetto del tipo K-NN
 	private KNearestNeighbor knnFinder;
 
+	public SimpleDriver() {
+		this.knnFinder = new KNearestNeighbor("training.csv"); 
+	}
+
 	/* Metodo chiamato a inizio gara o dopo una collisione per azzerare lo stato */
 	public void reset() {
 		System.out.println("Restarting the race!");

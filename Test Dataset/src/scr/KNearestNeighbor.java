@@ -24,7 +24,6 @@ public class KNearestNeighbor {
     public KNearestNeighbor(String filename) {
         this.trainingData = new ArrayList<>();
         this.classCounts = new int[10]; //le classi di appartenenza sono 10
-        this.firstLineOfTheFile = "ANGLE;SPEED_X;SPEED_Y;TRACK_0;TRACK_1;TRACK_2;TRACK_3;TRACK_4;TRACK_5;TRACK_6;TRACK_7;TRACK_8;TRACK_9;TRACK_10;TRACK_11;TRACK_12;TRACK_13;TRACK_14;TRACK_15;TRACK_16;TRACK_17;TRACK_18;TRACK_POS;CLASS";
         this.readPointsFromCSV(filename);
 
         //Calcolo il numero di features in base alla lunghezza del vettore features di un singolo Sample 
@@ -117,11 +116,13 @@ public class KNearestNeighbor {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             String line;
+            line = reader.readLine(); // Legge la prima riga (intestazione) e la salta
             while ((line = reader.readLine()) != null) {
-                if (line.startsWith(firstLineOfTheFile)) {
-                    continue; // Skip header
+                // Salta le righe vuote, quelle che iniziano con "ANGLE" o quelle che non contengono numeri
+                if (line.trim().isEmpty() || line.startsWith("ANGLE") || !line.matches(".*\\d.*")) {
+                    continue;
                 }
-                // Add the sample by calling the constructor that takes the string input
+                // Crea un nuovo Sample a partire dalla riga letta
                 trainingData.add(new Sample(line));
             }
             reader.close();

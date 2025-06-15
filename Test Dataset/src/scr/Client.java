@@ -1,13 +1,14 @@
+/**
+ * 
+ */
 package scr;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.StringTokenizer;
 import scr.Controller.Stage;
 
-/*
- * Classe principale del client: si connette al server TORCS, 
- * invia comandi e riceve aggiornamenti di stato
+/**
+ * @author Daniele Loiacono
+ * 
  */
 public class Client {
 
@@ -16,29 +17,25 @@ public class Client {
 	private static String host;
 	private static String clientId;
 	private static boolean verbose;
-	private static int numberOfNeighbors; //aggiunto per scegliere da riga di comando il numero di vicini
 	private static int maxEpisodes;
 	private static int maxSteps;
 	private static Stage stage;
 	private static String trackName;
 
 	/**
-	 * @param args is used to define all the options of the client. <port:N> is used
-	 *             to specify the port for the connection (default is 3001)
-	 *             <host:ADDRESS> is used to specify the address of the host where
-	 *             the server is running (default is localhost) <id:ClientID> is
-	 *             used to specify the ID of the client sent to the server (default
-	 *             is championship2009) <verbose:on> is used to set verbose mode on
-	 *             (default is off) <maxEpisodes:N> is used to set the number of
-	 *             episodes (default is 1) <maxSteps:N> is used to set the max
-	 *             number of steps for each episode (0 is default value, that means
-	 *             unlimited number of steps) <stage:N> is used to set the current
-	 *             stage: 0 is WARMUP, 1 is QUALIFYING, 2 is RACE, others value
-	 *             means UNKNOWN (default is UNKNOWN) <trackName:name> is used to
-	 *             set the name of current track
+	 * @param args viene utilizzato per definire tutte le opzioni del client.
+	 *             - port:N viene utilizzato per specificare la porta per la connessione (il valore predefinito è 3001).
+	 *             - host:INDIRIZZO viene utilizzato per specificare l'indirizzo dell'host dove il server è in esecuzione (il valore predefinito è localhost).
+	 *             - id:ClientID viene utilizzato per specificare l'ID del client inviato al server (il valore predefinito è championship2009).
+	 *             - verbose:on viene utilizzato per attivare la modalità verbose (il valore predefinito è spento).
+	 *             - maxEpisodes:N viene utilizzato per impostare il numero di episodi (il valore predefinito è 1).
+	 *             - maxSteps:N viene utilizzato per impostare il numero massimo di passaggi per ogni episodio (il valore predefinito è 0, che significa numero illimitato di passaggi).
+	 *             - stage:N viene utilizzato per impostare lo stadio corrente: 0 è WARMUP, 1 è QUALIFYING, 2 è RACE, altri valori significano UNKNOWN (il valore predefinito è UNKNOWN).
+	 *             - trackName:nome viene utilizzato per impostare il nome della pista attuale.
 	 */
+
 	public static void main(String[] args) {
-		parseParameters(args); // Parsing degli argomenti da riga di comando
+		parseParameters(args);
 		SocketHandler mySocket = new SocketHandler(host, port, verbose);
 		String inMsg;
 
@@ -130,89 +127,74 @@ public class Client {
 		host = "localhost";
 		clientId = "SCR";
 		verbose = false;
-		numberOfNeighbors = 1;  //aggiunto per scegliere da riga di comando il numero di vicini
 		maxEpisodes = 1;
 		maxSteps = 0;
 		stage = Stage.UNKNOWN;
 		trackName = "unknown";
-	
+
 		for (int i = 1; i < args.length; i++) {
 			StringTokenizer st = new StringTokenizer(args[i], ":");
 			String entity = st.nextToken();
 			String value = st.nextToken();
 			if (entity.equals("port")) {
 				port = Integer.parseInt(value);
-			} else if (entity.equals("host")) {
+			}
+			if (entity.equals("host")) {
 				host = value;
-			} else if (entity.equals("id")) {
+			}
+			if (entity.equals("id")) {
 				clientId = value;
-			} else if (entity.equals("verbose")) {
-				if (value.equals("on")) {
+			}
+			if (entity.equals("verbose")) {
+				if (value.equals("on"))
 					verbose = true;
-				} else if (value.equals("off")) {
+				else if (value.equals(false))
 					verbose = false;
-				} else {
+				else {
 					System.out.println(entity + ":" + value + " is not a valid option");
 					System.exit(0);
 				}
-			} else if (entity.equals("stage")) {
+			}
+			if (entity.equals("id")) {
+				clientId = value;
+			}
+			if (entity.equals("stage")) {
 				stage = Stage.fromInt(Integer.parseInt(value));
-			} else if (entity.equals("trackName")) {
+			}
+			if (entity.equals("trackName")) {
 				trackName = value;
-			} else if (entity.equals("maxEpisodes")) {
+			}
+			if (entity.equals("maxEpisodes")) {
 				maxEpisodes = Integer.parseInt(value);
 				if (maxEpisodes <= 0) {
 					System.out.println(entity + ":" + value + " is not a valid option");
 					System.exit(0);
 				}
-			} else if (entity.equals("maxSteps")) {
+			}
+			if (entity.equals("maxSteps")) {
 				maxSteps = Integer.parseInt(value);
 				if (maxSteps < 0) {
 					System.out.println(entity + ":" + value + " is not a valid option");
 					System.exit(0);
 				}
-			} else if (entity.equals("numberOfNeighbors")) {  //aggiunto per scegliere da riga di comando il numero di vicini
-				numberOfNeighbors = Integer.parseInt(value);
 			}
 		}
 	}
-	
 
 	private static Controller load(String name) {
-    Controller controller = null;
-	
-    try {
-		//Creo un istanza di SimpleDriver con il numero di vicini passato come parametro
-        Class<?> clazz = Class.forName(name);
-        
-        Constructor<?> constructor = clazz.getConstructor(int.class);
-
-        controller = (Controller) constructor.newInstance(Client.numberOfNeighbors);
-
-        if (controller == null) {
-            System.out.println("Failed to instantiate controller.");
-        }
-
-    } catch (ClassNotFoundException e) {
-        System.out.println(name + " is not a class name");
-        System.exit(0);
-    } catch (InstantiationException e) {
-        // Handle instantiation exception
-        e.printStackTrace();
-    } catch (IllegalAccessException e) {
-        // Handle access exception
-        e.printStackTrace();
-    } catch (NoSuchMethodException e) {
-        // Handle missing constructor exception
-        e.printStackTrace();
-    } catch (InvocationTargetException e) {
-        // Handle invocation target exception
-        e.printStackTrace();
-    } catch (Exception e) {
-        // Handle any other exceptions
-        e.printStackTrace();
-    }
-    return controller;
-}
-
+		Controller controller = null;
+		try {
+			controller = (Controller) (Object) Class.forName(name).newInstance();
+		} catch (ClassNotFoundException e) {
+			System.out.println(name + " is not a class name");
+			System.exit(0);
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return controller;
+	}
 }
