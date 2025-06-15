@@ -16,7 +16,6 @@ public class Client {
 	private static String host;
 	private static String clientId;
 	private static boolean verbose;
-	private static int numberOfNeighbors; //aggiunto per scegliere da riga di comando il numero di vicini
 	private static int maxEpisodes;
 	private static int maxSteps;
 	private static Stage stage;
@@ -130,7 +129,6 @@ public class Client {
 		host = "localhost";
 		clientId = "SCR";
 		verbose = false;
-		numberOfNeighbors = 1;  //aggiunto per scegliere da riga di comando il numero di vicini
 		maxEpisodes = 1;
 		maxSteps = 0;
 		stage = Stage.UNKNOWN;
@@ -171,8 +169,6 @@ public class Client {
 					System.out.println(entity + ":" + value + " is not a valid option");
 					System.exit(0);
 				}
-			} else if (entity.equals("numberOfNeighbors")) {  //aggiunto per scegliere da riga di comando il numero di vicini
-				numberOfNeighbors = Integer.parseInt(value);
 			}
 		}
 	}
@@ -185,9 +181,9 @@ public class Client {
 		//Creo un istanza di SimpleDriver con il numero di vicini passato come parametro
         Class<?> clazz = Class.forName(name);
         
-        Constructor<?> constructor = clazz.getConstructor(int.class);
+        Constructor<?> constructor = clazz.getConstructor();
 
-        controller = (Controller) constructor.newInstance(Client.numberOfNeighbors);
+        controller = (Controller) constructor.newInstance();
 
         if (controller == null) {
             System.out.println("Failed to instantiate controller.");

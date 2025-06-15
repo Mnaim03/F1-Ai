@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
 public class SimpleDriver extends Controller {
 
@@ -39,17 +39,9 @@ public class SimpleDriver extends Controller {
 
 	//oggetto del tipo K-NN
 	private KNearestNeighbor knnFinder;
-	private int numberOfNeighbors; 
     
-	public SimpleDriver(int numberOfNeighbors) {
-		//vengano accettati dal costruttore solo un numero di vicini k dispari e maggiore di 0
-		if((numberOfNeighbors%2 != 0) && (numberOfNeighbors%2 > 0)){
-			this.knnFinder = new KNearestNeighbor("training.csv");
-			this.numberOfNeighbors = numberOfNeighbors;
-		} else {
-			System.out.println("Errore nella scelta del numero di vicini");
-			System.exit(1); 
-		}	
+	public SimpleDriver() {
+		knnFinder = new KNearestNeighbor("training.csv");
 	}
 
 	/* Metodo chiamato a inizio gara o dopo una collisione per azzerare lo stato */
@@ -149,16 +141,18 @@ public class SimpleDriver extends Controller {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) { // false per sovrascrivere
 			
 			// Scrivi l'intestazione con tutti i 19 angoli
-			StringBuilder header = new StringBuilder();
-			header.append("ANGLE;SPEED_X;SPEED_Y;");
-			
-			// Aggiungi le colonne per tutti i 19 sensori di traccia
-			for (int i = 0; i < 19; i++) {
-				header.append("TRACK_").append(i).append(";");
+			if (file.length() == 0) { // Scrivi l'intestazione solo se il file è vuoto
+				StringBuilder header = new StringBuilder();
+				header.append("ANGLE;SPEED_X;SPEED_Y;");
+				
+				// Aggiungi le colonne per tutti i 19 sensori di traccia
+				for (int i = 0; i < 19; i++) {
+					header.append("TRACK_").append(i).append(";");
+				}
+				
+				header.append("TRACK_POS;CLASS\n");
+				writer.write(header.toString());
 			}
-			
-			header.append("TRACK_POS;CLASS\n");
-			writer.write(header.toString());
 
 			// Scrivi tutti i dati raccolti
 			for (DataEntry entry : dataEntries) {

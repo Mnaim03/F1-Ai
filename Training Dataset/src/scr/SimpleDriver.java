@@ -158,16 +158,18 @@ public class SimpleDriver extends Controller {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) { // false per sovrascrivere
 			
 			// Scrivi l'intestazione con tutti i 19 angoli
-			StringBuilder header = new StringBuilder();
-			header.append("ANGLE;SPEED_X;SPEED_Y;");
-			
-			// Aggiungi le colonne per tutti i 19 sensori di traccia
-			for (int i = 0; i < 19; i++) {
-				header.append("TRACK_").append(i).append(";");
+			if (file.length() == 0) { // Scrivi l'intestazione solo se il file è vuoto
+				StringBuilder header = new StringBuilder();
+				header.append("ANGLE;SPEED_X;SPEED_Y;");
+				
+				// Aggiungi le colonne per tutti i 19 sensori di traccia
+				for (int i = 0; i < 19; i++) {
+					header.append("TRACK_").append(i).append(";");
+				}
+				
+				header.append("TRACK_POS;CLASS\n");
+				writer.write(header.toString());
 			}
-			
-			header.append("TRACK_POS;CLASS\n");
-			writer.write(header.toString());
 
 			// Scrivi tutti i dati raccolti
 			for (DataEntry entry : dataEntries) {
