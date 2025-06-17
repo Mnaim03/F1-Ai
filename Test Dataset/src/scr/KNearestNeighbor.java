@@ -33,7 +33,7 @@ public class KNearestNeighbor {
         this.means = new double[numFeatures];
         this.stds = new double[numFeatures];
 
-      //  scalingTrainingData(); // scalo il trainingData
+        scalingTrainingData(); // scalo il trainingData
         this.kdtree = new KDTree(trainingData); // Initialize the KDTree using the read points  
     }
 
@@ -148,8 +148,7 @@ public class KNearestNeighbor {
      */
     public int classify(Sample testPoint, int k) {
         //bisogna scalare il testPoint per poterlo confrontare con i punti delle classi (già precedentemente scalati)
-       // Sample testPointScaled = scalingSample(testPoint);
-        Sample testPointScaled = testPoint;
+        Sample testPointScaled = scalingSample(testPoint);
 
         List<Sample> kNearestNeighbors = findKNearestNeighbors(testPointScaled, k);
 
